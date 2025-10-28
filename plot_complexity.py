@@ -61,11 +61,11 @@ plt.annotate('Funções eficientes\n(O(1), O(log n), O(n))',
 
 # Ajustar layout e salvar
 plt.tight_layout()
-plt.savefig('complexity_chart.png', dpi=300, bbox_inches='tight', 
+plt.savefig('complexity_chart.jpg', dpi=300, bbox_inches='tight', 
             facecolor='white', edgecolor='none')
 plt.show()
 
-print("Gráfico salvo como 'complexity_chart.png'")
+print("Gráfico salvo como 'complexity_chart.jpg'")
 print("\nObservações:")
 print("- O gráfico usa escala logarítmica para visualizar todas as funções")
 print("- O(2^n) é mostrado apenas até n=32 pois cresce exponencialmente")

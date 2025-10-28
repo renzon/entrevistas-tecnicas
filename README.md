@@ -540,7 +540,7 @@ Isso significa que se um computador executasse 1 operação por segundo desde a 
 
 Para ter uma ideia visual da discrepância entre as funções, veja o gráfico abaixo gerado pelo script `plot_complexity.py`:
 
-![Gráfico de Complexidades](./complexity_chart.png)
+![Gráfico de Complexidades](./complexity_chart.jpg)
 
 O gráfico usa escala logarítmica no eixo Y para poder visualizar todas as funções no mesmo gráfico, já que O(2^n) cresce tão rapidamente que tornaria as outras funções invisíveis em escala linear.
 
