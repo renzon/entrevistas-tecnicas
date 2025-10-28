@@ -5,36 +5,30 @@ Resumo de conhecimento essencial e obrigatório para arrasar em entrevistas téc
 
 ## Motivação
 
-Praticamente todo processo seletivo de devs tem uma fase de entrevista técnica onde o candidato vai codar ao vivo para demonstrar seu conhecimento.
-Por isso é necessário afiar o machado para causar uma boa impressão na entrevista.
+Praticamente todo processo seletivo de desenvolvedores tem uma fase de entrevista técnica. Nela, o candidato precisa programar ao vivo para demonstrar seu conhecimento. Por isso, é necessário afiar o machado para causar uma boa impressão na entrevista.
 
-Então a grande motivação desse repositório é apresentar o resumo geral desse conhecimento.
+A grande motivação deste repositório é apresentar um resumo geral desse conhecimento.
 
-Os exemplos aqui são códigos Python válidos, mas os conceitos são aplicavéis a qualquer linguagem de programação.
+Os exemplos aqui são códigos Python válidos. Mas os conceitos se aplicam a qualquer linguagem de programação.
 
-Então sequem os conhecimentos essencias
+Seguem os conhecimentos essenciais.
 
-## Estrutura de dados lineares
+## Estruturas de dados lineares
 
-Como as entrevistas técnicas costumam durar apenas uma hora, é raro cairem questões envolvendo estruturas de complexas,
-como árvores e grafos. Por isso você deve focar no conhecimento profundo de estruturas de dados lineares. São elas:
+As entrevistas técnicas costumam durar apenas uma hora. Por isso, é raro cairem questões envolvendo estruturas complexas, como árvores e grafos. Devemos focar no conhecimento profundo de estruturas de dados lineares. São elas:
 
 1. Lista (List) ou Vetor (Vector)
-2. Lista Duplamente Ligada (Double Linked List - Dequeue)
+2. Lista Duplamente Ligada (Double Linked List - Deque)
 3. Conjunto (Set)
 4. Dicionário (Dict) ou Mapa (Map)
 
-A primeira camada é saber quais problemas podem ser resolvidos com essas estruturas de forma simples e eficiente.
-Mais importante ainda saber quando não utilizar essas estruturas.
-Segue resumo de cada uma:
+A primeira camada é saber quais problemas podemos resolver com essas estruturas de forma simples e eficiente. Mais importante ainda é saber quando não utilizar essas estruturas. Segue resumo de cada uma:
 
 ### Lista (List) ou Vetor (Vector)
 
-São estruturas de dados contíguas extremamente eficientes para leitura de dados por índice. 
-Também são extremamente eficientes para adição e remoção de elementos em seu final, sendo excelente implementações de pilhas.
-Costumam ser muito utilizadas em problemas que envolvem ordenação de dados, de forma direta ou indireta.
-E ainda são eficiente para se obter o tamanho de uma lista e também para trocar um elemento por outro.
-Seguem então as operações eficientes:
+São estruturas de dados contíguas extremamente eficientes para leitura de dados por índice. Também são extremamente eficientes para adição e remoção de elementos em seu final. São excelentes implementações de pilhas.
+
+Costumam ser muito utilizadas em problemas que envolvem ordenação de dados, de forma direta ou indireta. São eficientes para obter o tamanho de uma lista e também para trocar um elemento por outro. Seguem as operações eficientes:
 
 ```python
 
@@ -64,9 +58,7 @@ Seguem então as operações eficientes:
 
 #### Quando não utilizar Lista (List) ou Vetor (Vector)
 
-Essas estruturas são ineficientes para inserções de elementos em seu início ou meio.
-Por isso não devem ser usados em problemas que precisam de filas.
-Exemplo de operações ineficientes:
+Essas estruturas são ineficientes para inserções de elementos em seu início ou meio. Por isso não devem ser usadas em problemas que precisam de filas. Exemplo de operações ineficientes:
 
 ```python
 >>> lista = list(range(1, 10))  # Criação da lista
@@ -88,7 +80,7 @@ Exemplo de operações ineficientes:
 
 Então, para os casos em que se precisa de uma fila, melhor usar uma lista duplamente ligada. Confira na próxima seção.
 
-### Lista Duplamente Ligada (Double Linked List - Dequeue)
+### Lista Duplamente Ligada (Double Linked List - Deque)
 
 São estruturas parecidas com a lista. Mas permitem remoção e inserção eficiente tanto no inĩ́cio quando em fim. 
 Por isso são recomendadas em problemas que exigem fila. Confira as operações iguais as das lista que são eficientes:
@@ -98,11 +90,11 @@ Por isso são recomendadas em problemas que exigem fila. Confira as operações 
 >>> lista = deque(range(1, 10))  # Criação da lista
 >>> lista # Lista com 9 elementos contíguos
 deque([1, 2, 3, 4, 5, 6, 7, 8, 9])
->>> lista.popleft() # Removendo primeiro elemento de forma ineficiente, quanto maior a lista, mais tempo demora
+>>> lista.popleft() # Removendo primeiro elemento de forma eficiente
 1
 >>> lista # Lista com primeiro elemento removido
 deque([2, 3, 4, 5, 6, 7, 8, 9])
->>> lista.appendleft(1) # Inserindo elemento no início de forma ineficiente, quanto maior a lista, mais tempo demora
+>>> lista.appendleft(1) # Inserindo elemento no início de forma eficiente
 >>> lista # Lista com primeiro elemento inserido
 deque([1, 2, 3, 4, 5, 6, 7, 8, 9])
 >>> lista.pop() # Também eficiente para remoção do fim da lista
@@ -115,8 +107,8 @@ deque([1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 ```
 
-#### Quando Lista Duplamente Ligada (Double Linked List - Dequeue)
-A lista duplamente ligada não é eficiente para acesso a elementos próximos ao seu meio. Para esses casos, melhor usar listas.
+#### Quando não usar Lista Duplamente Ligada (Double Linked List - Deque)
+A lista duplamente ligada não é eficiente para acesso a elementos próximos ao seu meio. Para esses casos, é melhor usar listas.
 
 ```python
 >>> from collections import deque
@@ -152,7 +144,7 @@ False
 
 ```
 
-É muito comum existirem problemas onde é necessário manter a memória de passos já realizados. Para esses casos, deve se
+É muito comum existirem problemas onde é necessário manter a memória de passos já realizados (backtrack). Para esses casos, deve se
 evitar usar listas. Nesse caso, melhor usar conjuntos, confira a seguir.
 
 ### Conjunto (Set)
@@ -173,7 +165,7 @@ False
 {1}
 >>> 1 in conjunto
 True
->>> conjunto.update(range(10)) # Adiição de múltiplos elementos é eficiente e não permite duplicatas, só possui 1 uma vez
+>>> conjunto.update(range(10)) # Adiição de múltiplos elementos é eficiente e não permite duplicatas, só possui "1" uma vez
 >>> conjunto
 {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 >>> conjunto.add(1)  # Mesmo com adição de elemento, não permite repetição
@@ -187,7 +179,7 @@ True
 
 ```
 
-Apesar de conjuntos serem exclentes para se manter backtracking, não permitem acesso a elementos por índices.
+Apesar de conjuntos serem excelentes para se manter backtracking, não permitem acesso a elementos por índices.
 
 #### Quando não usar conjuntos
 
@@ -238,7 +230,7 @@ Em termos de eficiencia de operações, funcionam exatamente como conjuntos, con
 {'banana': 12.5, 'laranja': 1.5, 'uva': 1.2}
 
 ```
-Como são parecidos com conjuntos, os casos onde dicionários não devem ser usados são parecidos, confira a seguir.
+Como são parecidos com conjuntos, os casos onde dicionários não devem ser usados são parecidos. Confira a seguir.
 
 #### Quando não usar dicionários
 
@@ -266,42 +258,40 @@ uva 1.2
 
 ```
 
-Assim se encerram as estruturas de dados lineares necessárias para se resolver 99% das questões de entrevistas técnicas.
+Assim se encerram as estruturas de dados lineares necessárias para resolver 99% das questões de entrevistas técnicas.
 
 ### Conclusão sobre estruturas de dados lineares
 
-Conhecer as quatro estruturas de dados lineares elementares é fundamental para passar na entrevista técnicas de processos seletivos para devs.
-Saber escolher a estrutura de dados mais adequada para um problema é essencial para demostrar conhecimento dos fundamentos.
-E esse conhecimento já deve fazer o profissional passar em várias entrevistas para empresas médias e pequenas.
+Conhecer as quatro estruturas de dados lineares elementares é fundamental para passar nas entrevistas técnicas de processos seletivos para desenvolvedores. Saber escolher a estrutura de dados mais adequada para um problema é essencial para demonstrar conhecimento dos fundamentos.
 
-Agora se você pretende trabalhar em grandes empresas, principalmente as do exterior e ou americanas, como Google e Facebook, você vai precisar ir além.
-Você vai precisar conhecer e analisar seus algorítmos do ponto de vista de complexidade em tempo de execução e memória.
-Veja o resumo desse assunto na próxima seção.
+Esse conhecimento já deve fazer o profissional passar em várias entrevistas para empresas médias e pequenas.
+
+Se pretendemos trabalhar em grandes empresas, principalmente as do exterior ou americanas, como Google e Facebook, precisamos ir além. Precisamos conhecer e analisar nossos algoritmos do ponto de vista de complexidade em tempo de execução e memória. Veja o resumo desse assunto na próxima seção.
 
 ## Análise e Complexidade de Algoritmos
 
-Análise de complexidade de tempo de execução e uso de memória é uma matéria de faculdade que muitas vezes só e visa na pós graduação, no Brasil.
-Contudo essa matéria é dada na graduação das faculdades americanas e saber fazer essa análise é indipensável para quem quer fazer processos seletivos de empresas grande, como Google e Facebook.
+Análise de complexidade de tempo de execução e uso de memória é uma matéria de faculdade. Muitas vezes só é vista na pós-graduação, no Brasil. Contudo essa matéria é dada na graduação das faculdades americanas.
 
-Você não precisa ter um conhecimento profundo, mas precisa conseguir fazer essa análise de rapidamente e visualmente na hora do processo seletivo.
+Saber fazer essa análise é indispensável para quem quer fazer processos seletivos de empresas grandes, como Google e Facebook.
 
-Além disso, precisa saber usar a análise para tentar buscar soluções eficientes. 
-A heurística que funciona é:
+Não precisamos ter um conhecimento profundo. Mas precisamos conseguir fazer essa análise rapidamente e visualmente na hora do processo seletivo.
 
-1. Valide que entendeu os requistos dos problemas, incluindo natureza de entradas e saídas dos programas
-2. Faça a solução mais simples possível, mesmo que ineficiente. Não resolver é pior que implementar solução ineficiente.
-3. Analise a complexidade da solução
-4. Verifique como melhorar a perfomance, como por exemplo, ordenar as entradas do programa.
-5. Impĺemente a melhora de perfomance proposta.
+Além disso, precisamos saber usar a análise para buscar soluções eficientes. A heurística que funciona é:
 
-Então, para poder fazer essa análise e heurística, você precisa:
+1. Validamos que entendemos os requisitos dos problemas, incluindo natureza de entradas e saídas dos programas
+2. Fazemos a solução mais simples possível, mesmo que ineficiente. Não resolver é pior que implementar solução ineficiente
+3. Analisamos a complexidade da solução
+4. Verificamos como melhorar a performance, como por exemplo, ordenar as entradas do programa
+5. Implementamos a melhora de performance proposta
+
+Para poder fazer essa análise e heurística, precisamos:
 
 1. Saber as 7 principais funções de análise e complexidade
-2. Saber comparar cada uma dessas funções em termos de peformance
+2. Saber comparar cada uma dessas funções em termos de performance
 3. Saber a complexidade das operações das estruturas lineares
-4. Conhecer e saber a complexidade dos algorítmos clássicos de soluções de problemas
+4. Conhecer e saber a complexidade dos algoritmos clássicos de soluções de problemas
 
-Vamos então detalhar cada um desses pontos.
+Vamos detalhar cada um desses pontos.
 
 ### As 7 funções de análise e complexidade de algorítmos
 
@@ -310,7 +300,7 @@ Você só precisa conhecer 7 dessas funções
 
 #### 1. O(1) - Constante
 
-ALgorítmos de tempo de constante são aqueles em que tempo de execução e memória independem do tamnho da entrada.
+Algorítmos de tempo de constante são aqueles em que tempo de execução e memória independem do tamanho da entrada.
 Ou seja, mesmo para uma lista grande de elementos, o algorítmo vai demorar sempre o mesmo tempo para executar.
 Esse tipo de algorítmo é o mais eficiente que existe, mas normalmente apenas problemas muito simples permitem solução constante.
 Segue uma tabela com as principais operações de tempo constante:
@@ -342,12 +332,13 @@ Segue uma tabela com as principais operações de tempo constante:
 | **Dict**              | Verificar existência de chave | Checar se chave existe | `'chave' in dict`                   |
 | **Dict**              | Obter tamanho  | Quantidade de elementos | `len(dct)`                          |
 
-Portanto você deverá ser capaz de identificar as operações de tempo constante de seu algoritmo e procurar usar as estruturas de dados lineares mais adequadas, buscando operações constantes sempre que possível.
-Quando não for possível, procurar usar a próxima solução mais eficinte, que é a logarítimica. Confira a seguir
+Portanto devemos ser capazes de identificar as operações de tempo constante de nosso algoritmo. Devemos procurar usar as estruturas de dados lineares mais adequadas, buscando operações constantes sempre que possível.
+
+Quando não for possível, procuramos usar a próxima solução mais eficiente, que é a logarítmica. Confira a seguir.
 
 #### 2. O(log n) - Logarítmico
 
-Os algorítmos logarítimcos são os mais eficientes depois dos constantes. 
+Os algorítmos logaritmicos são os mais eficientes depois dos constantes. 
 Normalmente são logarítimocos os algorítmos que conseguem dividir a entrada em duas partes e, a partir de uma condição, eliminar uma das metades como possível solução.
 O mais clássico algoritimo em complexidade logaritímica é a [Busca Binária](https://en.wikipedia.org/wiki/Binary_search).
 
@@ -377,7 +368,7 @@ Nesse caso, a solução mais eficiente é a liner, confira a seguir.
 
 #### 3. O(n) - Linear
 
-Algorítimos linears normalmente exigem a iteração em todos elementos da entrada, por isso o tempo de execução fica proporcional ao tamanho da entrada.
+Algorítmos lineares normalmente exigem a iteração em todos elementos da entrada, por isso o tempo de execução fica proporcional ao tamanho da entrada.
 
 Dentre as estruturas de dados lineares mencionadas, as seguintes operações são lineares, além de outras operaçoes básicas:
 
@@ -412,35 +403,31 @@ Dentre as estruturas de dados lineares mencionadas, as seguintes operações sã
 | **Dict**              | Encontrar chave por valor | Buscar chave que possui determinado valor | `[k for k, v in dict.items() if v == valor]` |
 | **Dict**              | Encontrar mínimo/máximo | Menor/maior valor ou chave | `min(dict.values())`, `max(dict.keys())` |
 
-Aqui fica claro o que já foi mencionado na descrição das estruturas lineares: escolher a estrutura correta ou não pode ser a diferença fundamental na performance de algorímo.
-Veja que se usar uma lista, usar a operação de pertencimento vai levar tempo proporcional ao tamanho da entrada, equanto usar conjunto vai levar a tempo constante.
+Aqui fica claro o que já foi mencionado na descrição das estruturas lineares: escolher a estrutura correta ou não pode ser a diferença fundamental na performance de algorítmo.
+Veja que se usar uma lista, usar a operação de pertencimento vai levar tempo proporcional ao tamanho da entrada, enquanto usar conjunto vai levar a tempo constante.
 
 Justamente a análise de complexidade permite a comparação de algoritmos em termos de tempo de execução e uso de memória.
 
 ** Curiosidade  do mundo real ** Os índices usados em banco de dados normalmente usam estruturas de dados que justamente permitem
-buscas em tempo logoritimico através de busca binária. Um exemplo é o índice [B-Tree](https://en.wikipedia.org/wiki/B-tree). 
-Sem índices a busca fica linear, ou seja, toda a tabela precisa ser percorrida, que se chama de "Full Table Scan".
+buscas em tempo logorítmico através de busca binária. Um exemplo é o índice [B-Tree](https://en.wikipedia.org/wiki/B-tree). 
+Sem índices a busca fica linear, ou seja, toda a tabela precisa ser percorrida, o que se chama de "Full Table Scan".
 Mas por outro lado a inserção e remoção de linhas na tabela piora. Sem índice essas operações podem ser feitas em O(1).
 Mas com índice existe o custo de inserção e remoção de elementos no índice, que custam log n. 
 
-Algorítmos lineares ainda são eficazes, mas nem sempre é possĩvel atingir esse tipo de performance.
+Algorítmos lineares ainda são eficazes, mas nem sempre é possível atingir esse tipo de performance.
 O próximo nivel em termos de função é chamado sublinear, confira a seguir:
 
 #### 4. O(n log n) - Sublinear
 
-Algorítmos sublineares possuem tempo de execução dado por n log n. 
-Eles possuem esse nome por conta da complexidade ser ligeirament pior que os lieanres,
-mas ainda bem melhores que os quadráticos.
-Os mais clássicos algoritmos sublineares que você precisa você precisa conhecer são os de ordenção complexos,
-como Merge Sort e Quick Sort.
+Algoritmos sublineares possuem tempo de execução dado por n log n. Eles possuem esse nome por conta da complexidade ser ligeiramente pior que os lineares. Mas ainda são bem melhores que os quadráticos.
 
-E as melhores soluções gerais de ordenação possuem essa complexidade.
-É raro se pedir para você implementar os algoritmos na entrevista, mas é fundamental você saber que esse é o custo a se pagar
-se você precisar ordenar uma lista de n elementos usando a biblioteca padrão da linguagem.
-Algumas vezes vai compensar pagar esse custo, se for diminuir a complexidade geral do algoritmo.
-Mas algumas vezes não vai compensar. Examplo disso é o cáculo do máximo elemento.
+Os mais clássicos algoritmos sublineares que precisamos conhecer são os de ordenação complexos, como Merge Sort e Quick Sort.
 
-Se usar a função max, já vimos que o custo é linear:
+As melhores soluções gerais de ordenação possuem essa complexidade. É raro ser solicitado para implementarmos os algoritmos na entrevista. Mas é fundamental sabermos que esse é o custo a se pagar se precisarmos ordenar uma lista de n elementos usando a biblioteca padrão da linguagem.
+
+Algumas vezes vai compensar pagar esse custo, se for diminuir a complexidade geral do algoritmo. Mas algumas vezes não vai compensar. Exemplo disso é o cálculo do máximo elemento.
+
+Se usarmos a função max, já vimos que o custo é linear:
 
 ```python
 >>> lista = [3, 2, 5, 7, 19]
@@ -461,14 +448,14 @@ Então usar ordenação vai piorar a complexidade do algorítmo, apesar de deixa
 
 ```
 
-Contudo, se fosse uma primeira solução em vez de se implementar manualmente o algorítmo max, seria válido para demosntrar conhecimento e foco na resolução do problema, antes de pensar em performance.
+Contudo, se fosse uma primeira solução em vez de se implementar manualmente o algorítmo max, seria válido para demonstrar conhecimento e foco na resolução do problema, antes de pensar em performance.
 
-Depois da complexidade sublinear temos a quadráticas em termos de ordem de complexidade. COnfira na próxima seção.
+Depois da complexidade sublinear temos a quadráticas em termos de ordem de complexidade. Confira na próxima seção.
 
 #### 5. O(n^2) - Quadrática
 
-Algorítimos quadráticos acontecem normalmnte quando temos dois laços aninhados para executar uma operação.
-Se encaixam aqui os algorítmos de ordençaõ simples, como Selection, Insertion e Buble Sort.
+Algorítmos quadráticos acontecem normalmente quando temos dois laços aninhados para executar uma operação.
+Se encaixam aqui os algorítmos de ordenaçaõ simples, como Selection, Insertion e Buble Sort.
 Costumam ocorrer também em operações em matrizes quadradas, como soma e subtração.
 
 Quando uma solução for quadrática vale sempre a pena estudar se a ordenação das entradas dos programa diminuiria a complexidade geral do algoritmo.
@@ -483,31 +470,27 @@ Por isso é suficiente conhecer a quadrática e a cúbica, explicada a seguir.
 
 #### 6. O(n^3) - Cúbica
 
-Algorítimos cúbicos acontecem normalmnte quando temos 3 laços aninhados para executar uma operação.
-Se encaixam operações em matrizes com 3 dimensões. 
-Ainda assim, esse tipo de problema com 3 dimensões são raros em processos seletivos. 
-Normalmente caem mais problemas com matrizes de duas dimesões.
+Algoritmos cúbicos acontecem normalmente quando temos 3 laços aninhados para executar uma operação. Se encaixam operações em matrizes com 3 dimensões. 
 
-Por isso não precisamos nos aprofundar nessa função. Assim, só fica faltando tratar da ṹltima função, a exponencial, confira a seguir.
+Ainda assim, esse tipo de problema com 3 dimensões é raro em processos seletivos. Normalmente caem mais problemas com matrizes de duas dimensões.
+
+Por isso não precisamos nos aprofundar nessa função. Assim, só fica faltando tratar da última função, a exponencial. Confira a seguir.
 
 #### 7. O(2^n) - Exponencial
 
-Algorítmos exponenciais possuem a pior complexidade que existe. 
-Normalmente com um pequeno aumento no tamanho da entrada o tempo de execução e/ou consumo de memória são tão grandes que não possível se chegar em uma solução.
+Algoritmos exponenciais possuem a pior complexidade que existe. Normalmente com um pequeno aumento no tamanho da entrada, o tempo de execução e/ou consumo de memória são tão grandes que não é possível chegar em uma solução.
 
-Se enquadram aqui problemas de definição recursiva implementados de forma inocente, como o calculo da sequencia de Fibonacci.
+Se enquadram aqui problemas de definição recursiva implementados de forma inocente, como o cálculo da sequência de Fibonacci.
 
-Problemas de explosão combinatorial também tem essa mesma característica, como listar as permutações possíveis de um conjunto.
+Problemas de explosão combinatorial também têm essa mesma característica, como listar as permutações possíveis de um conjunto.
 
-Justamente por isso é tão importante para empresas grande cobrarem esse assunto em um processo seletivo.
-Quando se atinge escala, permance pasta ser uma questão de viabilidade, não apenas um requisito não funcional.
+Justamente por isso é tão importante para empresas grandes cobrarem esse assunto em um processo seletivo. Quando se atinge escala, performance passa a ser uma questão de viabilidade, não apenas um requisito não funcional.
 
-Por fim, é importante você saber as ordens de grandeza ao comparar complexidades de algoritmos.
-Pos isso apresentamos todas funções e suas comparações na próxima seção.
+É importante sabermos as ordens de grandeza ao comparar complexidades de algoritmos. Por isso apresentamos todas as funções e suas comparações na próxima seção.
 
 ### Comparação das 7 principais funções de análise de complexidade
 
-Confira a ordem de magninute do aumento da saida quando aumetamos a entrada n de um algorítmo, de acordo com sua complexidade:
+Confira a ordem de magnitude do aumento da saída quando aumentamos a entrada n de um algoritmo, de acordo com sua complexidade:
 
 | n | O(1) | O(log n) | O(n) | O(n log n) | O(n²) | O(n³) | O(2^n) |
 |---|------|----------|------|------------|-------|-------|--------|
@@ -521,9 +504,9 @@ Confira a ordem de magninute do aumento da saida quando aumetamos a entrada n de
 
 **Observações importantes:**
 - **O(1)**: Sempre constante, independente do tamanho de n
-- **O(log n)**: Usando logaritmo base 2, cresce muito lentamente. É mais parecido com O(1) que O(n).
+- **O(log n)**: Usando logaritmo base 2, cresce muito lentamente. É mais parecido com O(1) que com O(n)
 - **O(n)**: Cresce linearmente com n
-- **O(n log n)**: Cresce um pouco mais rápido que linear. È mais parecida com a liner do que com a quadrática.
+- **O(n log n)**: Cresce um pouco mais rápido que linear. É mais parecida com a linear do que com a quadrática
 - **O(n²)**: Cresce rapidamente de forma quadrática
 - **O(n³)**: Cresce muito rapidamente de forma cúbica
 - **O(2^n)**: Cresce exponencialmente - torna-se impraticável muito rapidamente
@@ -551,34 +534,31 @@ O gráfico usa escala logarítmica no eixo Y para poder visualizar todas as fun�
 - As linhas curvas (O(n²) e O(n³)) mostram crescimento polinomial preocupante
 - A linha exponencial (O(2^n)) mostra crescimento explosivo e impraticável
 
-Assim se encerra a parte conceitual obrigatória para preparação para a fase de entrevista técnica.
-Mas só conhecer essa base teórica não é suficiente. Por isso segue estratégia para se preparar na próxima seção;
+Assim se encerra a parte conceitual obrigatória para preparação para a fase de entrevista técnica. Mas só conhecer essa base teórica não é suficiente. Por isso segue estratégia para nos prepararmos na próxima seção.
 
-## Como se prepara para a entrevista técnica
+## Como nos preparar para a entrevista técnica
 
-A recomendação é você criar um repositório para resolver problemas. 
-A ideia é treinar o conhecimento e aumentar seu repertório de soluções.
-Fazendo isso, normalmente você irá encontrar questões que já fez ou que são muito parecidas com exercícios.
+A recomendação é criarmos um repositório para resolver problemas. A ideia é treinar o conhecimento e aumentar nosso repertório de soluções. Fazendo isso, normalmente encontraremos questões que já fizemos ou que são muito parecidas com exercícios.
 
-Para isso, remenda-se fazer o máximo de exercicios do [Leetcode](https://leetcode.com/problemset/). 
-Fazendo ao menos os 30 primeiros já garante uma boa preparação Renzo, um dos colabores desse repositório, passou na entrevista técnica para grande empresas:
-Google, Facebook, Red Hat e Quinto Andar. [Nesse repositório](https://github.com/renzon/code_interview_training) ele concentra soluções para problemas do Leetcode e outros.
+Para isso, recomendamos fazer o máximo de exercícios do [Leetcode](https://leetcode.com/problemset/). Fazendo ao menos os 30 primeiros já garantimos uma boa preparação. 
+
+Renzo, um dos colaboradores desse repositório, passou na entrevista técnica para grandes empresas: Google, Facebook, Red Hat e Quinto Andar. [Nesse repositório](https://github.com/renzon/code_interview_training) ele concentra soluções para problemas do Leetcode e outros.
 
 ### Dicas finais
 
-1. Escolha, se o processo permitir, a linguagem de programação que você mais conhece.
+1. Escolhemos, se o processo permitir, a linguagem de programação que mais conhecemos.
 
-2. Busque validar as entradas e escrever testes, mesmo que em formato de comentários de código.
+2. Buscamos validar as entradas e escrever testes, mesmo que em formato de comentários de código.
 
-3. Debug mentalmente seu código, acrescentando valores de variáveis e sua evolução em comentários do código
+3. Fazemos debug mentalmente do nosso código, acrescentando valores de variáveis e sua evolução em comentários do código.
 
-4. Se tiver dominio de várias linguagens, escolha a de mais alto nível em que se escreva pouco, por isso Renzo sempre escolhe Python ;)
+4. Se tivermos domínio de várias linguagens, escolhemos a de mais alto nível em que se escreva pouco. Por isso Renzo sempre escolhe Python ;)
 
-5. Escreva testes para validar seu entendimento de entrada e saída. Pode ser em formato de comentári. Essa é outra razão para Renzo escolher Python. É possível executar comentários e até documentação em formato de doctest!
-Por exemplo, todo código dessa página é executado  e validado com o compando `python -m doctest README.md`, inclusive no 
-[![Doctest README.md](https://github.com/codigofontetv/entrevistas-tecnicas/actions/workflows/doctest.yml/badge.svg)](https://github.com/codigofontetv/entrevistas-tecnicas/actions/workflows/doctest.yml) desse repositório.
+5. Escrevemos testes para validar nosso entendimento de entrada e saída. Pode ser em formato de comentário. Essa é outra razão para Renzo escolher Python. É possível executar comentários e até documentação em formato de doctest!
 
-Então é isso, desejamos bons estudos e muitas aprovações nas entrevistas técncias!
+Por exemplo, todo código dessa página é executado e validado com o comando `python -m doctest README.md`, inclusive no [![Doctest README.md](https://github.com/codigofontetv/entrevistas-tecnicas/actions/workflows/doctest.yml/badge.svg)](https://github.com/codigofontetv/entrevistas-tecnicas/actions/workflows/doctest.yml) desse repositório.
+
+Então é isso, desejamos bons estudos e muitas aprovações nas entrevistas técnicas!
 
 
 
